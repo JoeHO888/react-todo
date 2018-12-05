@@ -1,28 +1,18 @@
 import React, { Component } from 'react'
-import TodoInput from './TodoInput'
-import Todos from './Todos'
+import TodoInput from '../container/TodoInputContainer'
+import Todos from '../container/TodosContainer'
 import { connect } from "react-redux";
 
 class TodoList extends Component {
-  addNewTodo = newTodo => {
-  
-    this.props.dispatch({ 
-      type: "ADDNEWTO",
-      payload: {newTodo}
-    })
-  }
+
   render() {
     return (
       <div>
-        <TodoInput onNewTodoAdded={this.addNewTodo}/>
-        <Todos todos={this.props.todos}/>
+        <TodoInput/>
+        <Todos/>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  todos: state.todos
-});
-
-export default connect(mapStateToProps)(TodoList);
+export default TodoList;
